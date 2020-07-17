@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: chatty_development
+
+test:
+  <<: *default
+  database: chatty_test
+
+production:
+  <<: *default
+  database: chatty_production
+  username: chatty
+  password: <%= ENV['CHATTY_DATABASE_PASSWORD'] %>
